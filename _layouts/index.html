@@ -1,0 +1,12 @@
+<!doctype html>
+<html>
+    <meta charset="utf-8" />
+    <title>Home</title>
+    <body>
+        {% for post in posts %}
+            <p>
+                <a href="{{ post.metadata['title'] }}.html">{{ post.metadata['title'] }}</a>
+            </p>
+        {% endfor %}
+    </body>
+</html>
