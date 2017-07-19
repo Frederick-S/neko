@@ -3,12 +3,12 @@ import frontmatter
 import markdown
 import jinja2
 import shutil
-from post import Post
+from neko.post import Post
 
 
 def init(target_path):
-    layouts_path = os.path.join(os.path.dirname(__file__), '../_layouts/')
-    posts_path = os.path.join(os.path.dirname(__file__), '../_posts/')
+    layouts_path = os.path.join(os.path.dirname(__file__), './_layouts/')
+    posts_path = os.path.join(os.path.dirname(__file__), './_posts/')
 
     shutil.copytree(layouts_path, os.path.join(target_path, '_layouts'))
     shutil.copytree(posts_path, os.path.join(target_path, '_posts'))

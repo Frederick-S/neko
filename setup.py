@@ -1,9 +1,9 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 setup(
     name='neko',
-    packages=['neko'],
-    version='0.0.1',
+    packages=find_packages(exclude=['tests']),
+    version='0.0.9',
     entry_points={
         'console_scripts': [
             'neko = neko.main:main'

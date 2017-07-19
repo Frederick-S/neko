@@ -1,2 +1,2 @@
-include _layouts/*
-include _posts/*
+include neko/_layouts/*
+include neko/_posts/*

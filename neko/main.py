@@ -1,6 +1,6 @@
 import os
 import sys
-from generate import init, parse_posts, build_site
+from neko.generate import init, parse_posts, build_site
 
 
 def main():
