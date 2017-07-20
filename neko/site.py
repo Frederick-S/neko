@@ -33,7 +33,7 @@ class Site():
 
     def build(self):
         self.parse_posts()
-        
+
         if os.path.exists(self.site_path):
             shutil.rmtree(self.site_path)
 
