@@ -22,6 +22,7 @@ class TestSite(unittest.TestCase):
         self.assertTrue(len(self.site.posts) > 0)
         self.assertTrue(os.path.exists(self.site.posts_path))
         self.assertTrue(os.path.exists(self.site.layouts_path))
+        self.assertTrue(os.path.exists(self.site.site_path))
 
     def tearDown(self):
         remove_folder(self.site.posts_path)

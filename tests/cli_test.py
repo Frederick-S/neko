@@ -38,6 +38,10 @@ class TestCli(unittest.TestCase):
         sys.argv[1:] = ['build']
         main()
 
+        self.assertTrue(os.path.exists(self.posts_path))
+        self.assertTrue(os.path.exists(self.layouts_path))
+        self.assertTrue(os.path.exists(self.site_path))
+
     def tearDown(self):
         remove_folder(self.posts_path)
         remove_folder(self.layouts_path)
