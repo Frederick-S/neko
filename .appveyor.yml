@@ -13,3 +13,5 @@ install:
   - "%PYTHON%\\python.exe -m pip install pep8"
 before_test:
   - "%PYTHON%\\Scripts\\pep8.exe ."
+test_script:
+  - "%PYTHON%\\python.exe setup.py test"
