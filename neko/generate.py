@@ -34,7 +34,8 @@ def build_site(posts, layouts_path, site_path):
     os.mkdir(site_path)
 
     template_loader = jinja2.FileSystemLoader(searchpath=layouts_path)
-    template_environment = jinja2.Environment(loader=template_loader)
+    template_environment = jinja2.Environment(loader=template_loader,
+                                              autoescape=True)
 
     render_to_file(template_environment, 'index.html',
                    '{0}index.html'.format(site_path), {'posts': posts})
