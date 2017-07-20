@@ -5,7 +5,7 @@ from neko.site import Site
 
 def main():
     if len(sys.argv) == 1:
-        print("Usage: neko init/build/serve")
+        print('Usage: neko init/build/serve')
 
         return
 
