@@ -1,6 +1,7 @@
 import os
 import sys
 from neko.generate import init, parse_posts, build_site
+from neko.serve import serve
 
 
 def main():
@@ -31,7 +32,7 @@ def main():
 
         build_site(posts, layouts_path, site_path)
     elif command == 'serve':
-        pass
+        serve(site_path, 8080)
 
 if __name__ == '__main__':
     main()

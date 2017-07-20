@@ -36,17 +36,22 @@ def build_site(posts, layouts_path, site_path):
     template_loader = jinja2.FileSystemLoader(searchpath=layouts_path)
     template_environment = jinja2.Environment(loader=template_loader)
 
-    template = template_environment.get_template('index.html')
-    html = template.render(posts=posts)
-
-    with open('{0}index.html'.format(site_path), 'wb') as f:
-        f.write(html.encode())
+    render_to_file(template_environment, 'index.html',
+                   '{0}index.html'.format(site_path), {'posts': posts})
 
     for post in posts:
         title = post.metadata['title']
+        content = post.content
 
-        template = template_environment.get_template('post.html')
-        html = template.render(title=title, content=post.content)
+        render_to_file(template_environment, 'post.html',
+                       '{0}{1}.html'.format(site_path, title),
+                       {'title': title, 'content': content})
 
-        with open('{0}{1}.html'.format(site_path, title), 'wb') as f:
-            f.write(html.encode())
+
+def render_to_file(template_environment, template_file_name,
+                   target_file_path, data):
+    template = template_environment.get_template(template_file_name)
+    html = template.render(data)
+
+    with open(target_file_path, 'wb') as f:
+        f.write(html.encode())
