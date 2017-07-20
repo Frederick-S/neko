@@ -18,8 +18,8 @@ class Site():
         layouts_path = os.path.join(os.path.dirname(__file__), './_layouts/')
         posts_path = os.path.join(os.path.dirname(__file__), './_posts/')
 
-        shutil.copytree(layouts_path, os.path.join(target_path, '_layouts'))
-        shutil.copytree(posts_path, os.path.join(target_path, '_posts'))
+        copy_folder(layouts_path, os.path.join(target_path, '_layouts'), True)
+        copy_folder(posts_path, os.path.join(target_path, '_posts'), True)
 
     def parse_posts(self):
         self.posts = []
@@ -34,10 +34,14 @@ class Site():
     def build(self):
         self.parse_posts()
 
-        if os.path.exists(self.site_path):
-            shutil.rmtree(self.site_path)
+        create_folder(self.site_path, True)
 
-        os.mkdir(self.site_path)
+        # Copy static files
+        static_files_path = os.path.join(
+            os.path.dirname(__file__), './_static')
+
+        copy_folder(
+            static_files_path, os.path.join(self.site_path, '_static'), True)
 
         template_loader = jinja2.FileSystemLoader(searchpath=self.layouts_path)
         template_environment = jinja2.Environment(loader=template_loader)
@@ -70,3 +74,17 @@ def render_to_file(template_environment, template_file_name,
 
     with open(target_file_path, 'wb') as f:
         f.write(html.encode())
+
+
+def create_folder(path, delete_existing_folder):
+    if delete_existing_folder and os.path.exists(path):
+        shutil.rmtree(path)
+
+    os.mkdir(path)
+
+
+def copy_folder(source_path, target_path, delete_existing_folder):
+    if delete_existing_folder and os.path.exists(target_path):
+        shutil.rmtree(target_path)
+
+    shutil.copytree(source_path, target_path)
