@@ -1,7 +1,6 @@
 import os
 import sys
-from neko.generate import init, parse_posts, build_site
-from neko.serve import serve
+from neko.site import Site
 
 
 def main():
@@ -22,17 +21,17 @@ def main():
     layouts_path = '{0}/_layouts/'.format(current_path)
     site_path = '{0}/_site/'.format(current_path)
 
+    site = Site(posts_path, layouts_path, site_path)
+
     if command == 'init':
         target_path = os.path.join(
             os.getcwd(), sys.argv[2] if len(sys.argv) == 3 else '.')
 
-        init(target_path)
+        site.init(target_path)
     elif command == 'build':
-        posts = parse_posts(posts_path)
-
-        build_site(posts, layouts_path, site_path)
+        site.build()
     elif command == 'serve':
-        serve(site_path, 8080)
+        site.serve(8080)
 
 if __name__ == '__main__':
     main()
