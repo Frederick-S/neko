@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 setup(
     name='neko',
     packages=find_packages(exclude=['tests']),
-    version='0.0.10',
+    version='0.0.11',
     entry_points={
         'console_scripts': [
             'neko = neko.main:main'
