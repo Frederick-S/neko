@@ -7,7 +7,7 @@ import http.server
 from neko.post import Post
 
 
-class Site():
+class Site(object):
     def __init__(self, posts_path, layouts_path, site_path):
         self.posts = []
         self.posts_path = posts_path
