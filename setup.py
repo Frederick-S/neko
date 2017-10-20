@@ -12,9 +12,9 @@ setup(
         ]
     },
     install_requires=[
-        'python-frontmatter',
-        'Markdown',
-        'Jinja2'
+        'python-frontmatter==0.4.2',
+        'Markdown==2.6.8',
+        'Jinja2==2.9.6'
     ],
     include_package_data=True,
     test_suite="tests"
