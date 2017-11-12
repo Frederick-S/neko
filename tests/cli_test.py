@@ -47,5 +47,6 @@ class TestCli(unittest.TestCase):
         remove_folder(self.layouts_path)
         remove_folder(self.site_path)
 
+
 if __name__ == '__main__':
     unittest.main()

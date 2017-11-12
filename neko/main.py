@@ -33,5 +33,6 @@ def main():
     elif command == 'serve':
         site.serve(8080)
 
+
 if __name__ == '__main__':
     main()
