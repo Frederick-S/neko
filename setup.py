@@ -14,7 +14,7 @@ setup(
     install_requires=[
         'python-frontmatter==0.4.2',
         'Markdown==2.6.8',
-        'Jinja2==2.9.6'
+        'Jinja2==2.11.3'
     ],
     include_package_data=True,
     test_suite="tests"
